@@ -1,0 +1,128 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>MongoDB Data Presentation Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body { background-color: #f1f3f7; font-family: 'Segoe UI', system-ui, sans-serif; }
+        .card { border: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 24px; }
+        .scroll-box { max-height: 280px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-6 fw-bold text-dark"> ABD Final Project </h1>
+        <p class="text-muted">Direct Integrated Controller Pipeline Engine Dashboard</p>
+    </div>
+
+    <div class="row">
+        <!-- Req A -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white fw-semibold py-3">Requirement A: Total Pop Over 10M</div>
+                <div class="card-body scroll-box">
+                    <table class="table table-hover table-sm">
+                        <thead><tr><th>State Name</th><th>Aggregated Population</th></tr></thead>
+                        <tbody>
+                            @foreach(var item in ViewBag.States10M) {
+                                <tr><td>@item.StateName</td><td class="fw-bold">@item.TotalPopulation.ToString("N0")</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Req B -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header bg-success text-white fw-semibold py-3">Requirement B: Average City Population by State</div>
+                <div class="card-body scroll-box">
+                    <table class="table table-hover table-sm">
+                        <thead><tr><th>State Name</th><th>Average City Size</th></tr></thead>
+                        <tbody>
+                            @foreach(var item in ViewBag.AvgCityPop) {
+                                <tr><td>@item.StateName</td><td>@item.AvgCityPopulation.ToString("N2")</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Req C and D Joint Matrix Grid Layout -->
+    <div class="card">
+        <div class="card-header bg-dark text-white fw-semibold py-3">Requirement C & D: Extreme Geographic Jurisdictions</div>
+        <div class="card-body scroll-box">
+            <table class="table table-bordered table-striped table-sm text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th rowspan="2" class="align-middle">State Name</th>
+                        <th colspan="2">City Metric Limits (Req c)</th>
+                        <th colspan="2">County Metric Limits (Req d)</th>
+                    </tr>
+                    <tr>
+                        <th>Smallest Pop Bound</th>
+                        <th>Largest Pop Bound</th>
+                        <th>Smallest Pop Bound</th>
+                        <th>Largest Pop Bound</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var cities = (List<ZipsAnalyticsApp.Models.ExtremeGeoDto>)ViewBag.ExtremeCities;
+                        var counties = (List<ZipsAnalyticsApp.Models.ExtremeGeoDto>)ViewBag.ExtremeCounties;
+                        for(int i = 0; i < cities.Count; i++) {
+                            <tr>
+                                <td><strong>@cities[i].StateName</strong></td>
+                                <td class="text-secondary">@cities[i].SmallestName (@cities[i].SmallestPopulation.ToString("N0"))</td>
+                                <td class="text-primary fw-bold">@cities[i].LargestName (@cities[i].LargestPopulation.ToString("N0"))</td>
+                                <td class="text-secondary">@counties[i].SmallestName (@counties[i].SmallestPopulation.ToString("N0"))</td>
+                                <td class="text-success fw-bold">@counties[i].LargestName (@counties[i].LargestPopulation.ToString("N0"))</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <!-- Req E -->
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-header bg-info text-dark fw-semibold py-3">Requirement E: 10 Proximity Zips from Willis Tower (Chicago)</div>
+                <div class="card-body">
+                    <table class="table table-sm table-striped">
+                        <thead><tr><th>Target Zip</th><th>City Location</th><th>Calculated Distance</th></tr></thead>
+                        <tbody>
+                            @foreach(var item in ViewBag.NearestZips) {
+                                <tr><td>@item.Zip</td><td>@item.City</td><td class="text-info fw-bold">@item.DistanceKm.ToString("N3") km</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Req F -->
+        <div class="col-md-5">
+            <div class="card border-warning">
+                <div class="card-header bg-warning text-dark fw-semibold py-3">Requirement F: Ring Zone Radius Sum (Statue of Liberty)</div>
+                <div class="card-body text-center py-5">
+                    <h6 class="text-uppercase text-muted tracking-wider">Living Residents Zone (50km - 200km)</h6>
+                    <h2 class="display-5 fw-bold text-dark my-3">@ViewBag.StatueRadiusPop.ToString("N0")</h2>
+                    <span class="badge bg-dark px-3 py-2">Spherical Geometry Index Pipeline Verified</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
