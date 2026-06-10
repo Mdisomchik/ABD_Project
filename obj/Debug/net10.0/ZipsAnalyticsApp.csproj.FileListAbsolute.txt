@@ -103,3 +103,4 @@
 /home/maxim/ZipsAnalyticsApp/obj/Debug/net10.0/ZipsAnalyticsApp.pdb
 /home/maxim/ZipsAnalyticsApp/obj/Debug/net10.0/ZipsAnalyticsApp.genruntimeconfig.cache
 /home/maxim/ZipsAnalyticsApp/obj/Debug/net10.0/ref/ZipsAnalyticsApp.dll
+/home/maxim/ZipsAnalyticsApp/obj/Debug/net10.0/ZipsAnalyticsApp.sourcelink.json

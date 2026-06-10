@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ZipsAnalyticsApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c60c5380266fe5e4ae67b7ba146236f7b125f5aa")]
 [assembly: System.Reflection.AssemblyProductAttribute("ZipsAnalyticsApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ZipsAnalyticsApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
