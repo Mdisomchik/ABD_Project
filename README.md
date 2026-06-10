@@ -6,13 +6,26 @@ ZipsAnalyticsApp is an ASP.NET Core MVC project that connects to a MongoDB datas
 
 The application performs a series of analytical queries against a `zips` MongoDB collection and displays results in a dashboard view.
 
+![alt text](image.png)
+
 Key analysis features:
+
 - Requirement A: States with total population greater than 10 million.
+![alt text](image-1.png)
+
 - Requirement B: Average city population for each state.
+![alt text](image-2.png)
+
 - Requirement C: Smallest and largest city by population in each state.
 - Requirement D: Smallest and largest county by population in each state.
+![alt text](image-3.png)
+
 - Requirement E: Closest 10 ZIP codes to Willis Tower in Chicago using geospatial proximity.
+![alt text](image-4.png)
+
 - Requirement F: Total population within a 50–200 km spherical radius of the Statue of Liberty.
+![alt text](image-5.png)
+
 
 ## Technology stack
 
